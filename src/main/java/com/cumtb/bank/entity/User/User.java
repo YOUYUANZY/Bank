@@ -1,13 +1,12 @@
 package com.cumtb.bank.entity.User;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int uid;//用户标识
     private String name;//用户姓名
     private String id;//身份证号
@@ -16,7 +15,6 @@ public class User {
     private String answer;//密保答案
     private String password;//登录密码
     private String address;//住址
-
     public User() {
     }
 
