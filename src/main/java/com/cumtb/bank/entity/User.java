@@ -1,6 +1,13 @@
 package com.cumtb.bank.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "user")
 public class User {
+    @Id
     private int uid;//用户标识
     private String name;//用户姓名
     private String id;//身份证号
