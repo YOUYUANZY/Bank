@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int uid;//用户标识
+    private Integer uid;//用户标识
     private String name;//用户姓名
     private String id;//身份证号
     private String phone;//手机号
@@ -16,7 +16,7 @@ public class User {
     private String password;//登录密码
     private String address;//住址
 
-    public int getUid() {
+    public Integer getUid() {
         return uid;
     }
 
