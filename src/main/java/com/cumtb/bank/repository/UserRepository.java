@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, int> {
+public interface UserRepository extends JpaRepository<User, Integer> {
     /**
      * 可以自动查询，驼峰命名法
      * */
