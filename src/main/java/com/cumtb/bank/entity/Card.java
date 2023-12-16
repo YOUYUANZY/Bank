@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Table(name = "card")
 @Entity
-public class Card {
+public class Card{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer cid;
@@ -12,6 +12,9 @@ public class Card {
     private String password;
     private Integer state;
     private Integer type;
+
+    public Card() {
+    }
 
     public Integer getCid() {
         return cid;
@@ -50,6 +53,14 @@ public class Card {
     }
 
     public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public Card(Integer cid, String cardID, String password, Integer state, Integer type) {
+        this.cid = cid;
+        this.cardID = cardID;
+        this.password = password;
+        this.state = state;
         this.type = type;
     }
 }

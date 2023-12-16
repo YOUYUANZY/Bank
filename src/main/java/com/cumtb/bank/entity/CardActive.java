@@ -12,6 +12,15 @@ public class CardActive {
     private Float balance;
     private Float rate;
 
+    public CardActive(Integer cid, Float balance, Float rate) {
+        this.cid = cid;
+        this.balance = balance;
+        this.rate = rate;
+    }
+    public CardActive() {
+
+    }
+
     public Integer getCid() {
         return cid;
     }
@@ -31,7 +40,6 @@ public class CardActive {
     public Float getRate() {
         return rate;
     }
-
     public void setRate(Float rate) {
         this.rate = rate;
     }
