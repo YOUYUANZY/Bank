@@ -1,8 +1,8 @@
 package com.cumtb.bank.controller;
 
-import com.cumtb.bank.entity.Result;
+import com.cumtb.bank.utils.Result;
 import com.cumtb.bank.entity.User;
-import com.cumtb.bank.service.UserService;
+import com.cumtb.bank.service.LoginService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 @RequestMapping("/login")
 public class LoginController {
     @Resource
-    private UserService userService;
+    private LoginService loginService;
 
     /**
      * 登录接口
@@ -19,9 +19,9 @@ public class LoginController {
      * @param password 密码
      * @return Result结果
      * */
-    @PostMapping("/login")
+    @RequestMapping("/login")
     public Result login(@RequestParam String phone,@RequestParam String password){
-        User user=userService.loginService(phone,password);
+        User user= loginService.loginService(phone,password);
         if(user!=null){
             return Result.ok("登录成功!",user);
         }else{
@@ -34,9 +34,9 @@ public class LoginController {
      * @param newUser 用户实例，不带uid
      * @return Result结果
      * */
-    @PostMapping("/register")
+    @RequestMapping("/register")
     public Result register(@RequestBody User newUser){
-        User user=userService.registerService(newUser);
+        User user= loginService.registerService(newUser);
         if(user!=null){
             return Result.ok("注册成功!",user);
         }else{
@@ -51,9 +51,9 @@ public class LoginController {
      * @param id 身份证号
      * @return Result结果
      * */
-    @PostMapping("/findBack")
+    @RequestMapping("/findBack")
     public Result findBack(@RequestParam String name,@RequestParam String phone,@RequestParam String id){
-        User user=userService.findBackService(name,phone,id);
+        User user= loginService.findBackService(name,phone,id);
         if(user!=null){
             return Result.ok("存在此用户", new String[]{user.getUid().toString(), user.getQuestion()});
         }else{
@@ -67,9 +67,9 @@ public class LoginController {
      * @param answer 密保答案
      * @return Result结果
      * */
-    @PostMapping("/findBack/verify")
+    @RequestMapping("/findBack/verify")
     public Result verify(@RequestParam Integer uid,@RequestParam String answer){
-        User user=userService.queryByUid(uid);
+        User user= loginService.queryByUid(uid);
         if(user.getAnswer().equals(answer)){
             return Result.ok("验证成功!");
         }else{
@@ -84,12 +84,12 @@ public class LoginController {
      * @param repeatPass 重复密码
      * @return Result结果
      * */
-    @PostMapping("/findBack/revise")
+    @RequestMapping("/findBack/revise")
     public Result revise(@RequestParam Integer uid,@RequestParam String password,@RequestParam String repeatPass){
         if(password.equals(repeatPass)){
-            User user=userService.queryByUid(uid);
+            User user= loginService.queryByUid(uid);
             user.setPassword(password);
-            User newUser=userService.update(user);
+            User newUser= loginService.update(user);
             if(newUser!=null){
                 return Result.ok("密码修改成功!");
             }else{

@@ -1,33 +1,23 @@
 package com.cumtb.bank.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Table(name = "card")
+@Entity
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int  cid;//银行卡标识
-    private String cardID;//银行卡号
-    private String password;//登录密码
-    private int state;//银行卡状态
-    private int type;//银行卡类型
-    public Card() {
-    }
+    private Integer cid;
+    private String cardID;
+    private String password;
+    private Integer state;
+    private Integer type;
 
-    public Card(int cid, String cardID, String password, int state, int type) {
-        this.cid = cid;
-        this.cardID = cardID;
-        this.password = password;
-        this.state = state;
-        this.type = type;
-    }
-
-    public int getCid() {
+    public Integer getCid() {
         return cid;
     }
 
-    public void setCid(int cid) {
+    public void setCid(Integer cid) {
         this.cid = cid;
     }
 
@@ -47,19 +37,19 @@ public class Card {
         this.password = password;
     }
 
-    public int getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 
-    public int getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 }
