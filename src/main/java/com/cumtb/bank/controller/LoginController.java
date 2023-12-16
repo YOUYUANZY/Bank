@@ -19,7 +19,7 @@ public class LoginController {
      * @param password 密码
      * @return Result结果
      * */
-    @PostMapping("/login")
+    @RequestMapping("/login")
     public Result login(@RequestParam String phone,@RequestParam String password){
         User user=userService.loginService(phone,password);
         if(user!=null){
@@ -34,7 +34,7 @@ public class LoginController {
      * @param newUser 用户实例，不带uid
      * @return Result结果
      * */
-    @PostMapping("/register")
+    @RequestMapping("/register")
     public Result register(@RequestBody User newUser){
         User user=userService.registerService(newUser);
         if(user!=null){
@@ -51,7 +51,7 @@ public class LoginController {
      * @param id 身份证号
      * @return Result结果
      * */
-    @PostMapping("/findBack")
+    @RequestMapping("/findBack")
     public Result findBack(@RequestParam String name,@RequestParam String phone,@RequestParam String id){
         User user=userService.findBackService(name,phone,id);
         if(user!=null){
@@ -67,7 +67,7 @@ public class LoginController {
      * @param answer 密保答案
      * @return Result结果
      * */
-    @PostMapping("/findBack/verify")
+    @RequestMapping("/findBack/verify")
     public Result verify(@RequestParam Integer uid,@RequestParam String answer){
         User user=userService.queryByUid(uid);
         if(user.getAnswer().equals(answer)){
@@ -84,7 +84,7 @@ public class LoginController {
      * @param repeatPass 重复密码
      * @return Result结果
      * */
-    @PostMapping("/findBack/revise")
+    @RequestMapping("/findBack/revise")
     public Result revise(@RequestParam Integer uid,@RequestParam String password,@RequestParam String repeatPass){
         if(password.equals(repeatPass)){
             User user=userService.queryByUid(uid);

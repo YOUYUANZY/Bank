@@ -16,4 +16,5 @@ public interface LoanRepository extends JpaRepository<Loan, Integer> {
     List<Loan> findByUidAndType(Integer uid,Integer type);//查询用户某一类贷款
 
     List<Loan> findByUidAndState(Integer uid,Integer state);//查询用户某种情况的贷款
+
 }

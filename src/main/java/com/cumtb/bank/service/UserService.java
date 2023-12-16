@@ -36,7 +36,7 @@ public interface UserService {
 
     /**
      * 更新
-     * @param user 注册的user对象，uid不为为空
+     * @param user 修改密码user对象，uid不为空
      * @return
      * */
     User update(User user);
