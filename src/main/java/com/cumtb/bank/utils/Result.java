@@ -1,4 +1,4 @@
-package com.cumtb.bank.entity;
+package com.cumtb.bank.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

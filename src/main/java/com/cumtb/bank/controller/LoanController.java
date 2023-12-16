@@ -3,7 +3,7 @@ package com.cumtb.bank.controller;
 import com.cumtb.bank.entity.Loan;
 import com.cumtb.bank.entity.LoanState;
 import com.cumtb.bank.entity.LoanType;
-import com.cumtb.bank.entity.Result;
+import com.cumtb.bank.utils.Result;
 import com.cumtb.bank.service.LoanService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +25,7 @@ public class LoanController {
     @RequestMapping("/loanstate")
     public Result loanState(){
         List<LoanState> loanStateList=loanService.getLoanStateService();
-        if(loanStateList!=null){
+        if(!loanStateList.isEmpty()){
             return Result.ok("成功获取贷款状态信息!",loanStateList);
         }else{
             return Result.err(Result.CODE_ERR_BUSINESS,"贷款状态信息为空或查询错误!");
@@ -44,7 +44,7 @@ public class LoanController {
     @RequestMapping("/query")
     public Result query(@RequestParam Integer uid, @RequestParam Integer cid, @RequestParam Integer type, @RequestParam Integer state){
         List<Loan> loanList=loanService.queryService(uid, cid, type, state);
-        if(loanList!=null){
+        if(!loanList.isEmpty()){
             return Result.ok("查询成功!",loanList);
         }else{
             return Result.ok("无相关记录");
@@ -59,7 +59,7 @@ public class LoanController {
     @RequestMapping("/loantype")
     public Result loanType(){
         List<LoanType> loanTypeList=loanService.getLoanTypeService();
-        if(loanTypeList!=null){
+        if(!loanTypeList.isEmpty()){
             return Result.ok("成功获取贷款类型信息!",loanTypeList);
         }else{
             return Result.err(Result.CODE_ERR_BUSINESS,"贷款类型信息为空或查询错误!");

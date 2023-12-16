@@ -2,13 +2,13 @@ package com.cumtb.bank.service.impl;
 
 import com.cumtb.bank.entity.User;
 import com.cumtb.bank.repository.UserRepository;
-import com.cumtb.bank.service.UserService;
+import com.cumtb.bank.service.LoginService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class LoginServiceImpl implements LoginService {
     @Resource
     private UserRepository userRepository;
 

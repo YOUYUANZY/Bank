@@ -2,7 +2,7 @@ package com.cumtb.bank.service;
 
 import com.cumtb.bank.entity.User;
 
-public interface UserService {
+public interface LoginService {
     /**
      * 登录业务
      * @param phone 手机号
