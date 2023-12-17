@@ -1,14 +1,13 @@
 package com.cumtb.bank.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Table(name = "tradeinfo")
 @Entity
 public class TradeInfo {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int tid; // 交易记录流水号
     private String fromName; // 转出方姓名
     private String fromCard; // 转出方卡号

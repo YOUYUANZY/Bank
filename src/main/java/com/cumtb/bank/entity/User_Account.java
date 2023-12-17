@@ -6,16 +6,16 @@ import javax.persistence.Table;
 
 @Table(name = "user_account")
 @Entity
-public class user_account {
+public class User_Account {
     @Id
     private Integer uid;
     @Id
     private Integer cid;
 
-    public user_account() {
+    public User_Account() {
     }
 
-    public user_account(Integer uid, Integer cid) {
+    public User_Account(Integer uid, Integer cid) {
         this.uid = uid;
         this.cid = cid;
     }

@@ -1,12 +1,9 @@
 package com.cumtb.bank.controller;
 
-import com.cumtb.bank.entity.Card;
-import com.cumtb.bank.entity.CardActive;
-import com.cumtb.bank.entity.UserFinanceInfo;
+import com.cumtb.bank.entity.*;
 import com.cumtb.bank.service.AccountService;
 import com.cumtb.bank.service.FinanceService;
 import com.cumtb.bank.utils.Result;
-import com.cumtb.bank.entity.User;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -44,14 +41,15 @@ public class AccountController {
         }
         return Result.ok("存款成功",cardActive);
     }
-    //修改交易密码
-    @RequestMapping("/change_password")
-    public Result changePassword(@RequestParam String cardid, @RequestParam String newPassword) {
-        Card card=accountService.change_password(cardid,newPassword);
-        if(card==null){
-            return Result.err(Result.CODE_ERR_BUSINESS,"修改失败");
+    //转账
+    @RequestMapping("/transfer")
+    public Result changePassword(@RequestParam String cardid1, @RequestParam String cardid2,float money) {
+       TradeInfo tradeInfo=accountService.transfer(cardid1,cardid2,money);
+        if(tradeInfo==null){
+            return Result.err(Result.CODE_ERR_BUSINESS,"转账失败");
         }
-        return Result.ok("修改成功",card);
+        return Result.ok("转账成功",tradeInfo);
     }
+    //查询活期余额
 
 }
