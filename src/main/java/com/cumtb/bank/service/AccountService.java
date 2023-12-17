@@ -25,22 +25,31 @@ public class AccountService {
         return null;
     }
     //取款
-    public boolean withdrawal(Integer cid,float money){
+    public CardActive withdrawal(Integer cid,float money){
         CardActive cardActive=cardActiveRepository.findByCid(cid);
+        if(cardActive==null)return null;
         float NowMoney=cardActive.getBalance();
-        if(money>NowMoney)return false;
-        else {
-            cardActive.setBalance(NowMoney - money);
-            cardActiveRepository.save(cardActive);
-            return  true;
+        if(NowMoney<money)return null;
+        cardActive.setBalance(NowMoney - money);
+        return cardActiveRepository.save(cardActive);
         }
-    }
     //活期存款
-    public boolean current_deposit(Integer cid,float money){
+    public CardActive current_deposit(Integer cid,float money){
         CardActive cardActive=cardActiveRepository.findByCid(cid);
+        if(cardActive==null)return null;
         float NowMoney=cardActive.getBalance();
-            cardActive.setBalance(NowMoney + money);
-            cardActiveRepository.save(cardActive);
-            return  true;
+        cardActive.setBalance(NowMoney + money);
+        return cardActiveRepository.save(cardActive);
+
     }
+    //修改密码
+    public Card change_password(String cardid, String newPassword) {
+        Card card = cardRepository.findByCardID(cardid);
+        if (card != null && !card.getPassword().equals(newPassword)) {
+            card.setPassword(newPassword);
+            return cardRepository.save(card);
+        }
+        return null;
+    }
+
 }
