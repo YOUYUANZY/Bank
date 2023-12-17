@@ -11,6 +11,7 @@ public class AccountService {
     private CardActiveRepository cardActiveRepository;
     private TradeInfoRepository tradeInfoRepository;
     private UserRepository userRepository;
+
     //创建用户
     public Card CreateCard(Card card,Integer uid) {
         // 检查是否存在具有相通carid的用户
@@ -51,6 +52,7 @@ public class AccountService {
         }
         return null;
     }
+    //转账
     public TradeInfo transfer(String cardid1, String cardid2, float money) {
         Card card1 = cardRepository.findByCardID(cardid1);
         Card card2 = cardRepository.findByCardID(cardid2);
@@ -74,6 +76,11 @@ public class AccountService {
 
         tradeInfo = tradeInfoRepository.save(tradeInfo);
         return tradeInfo;
+    }
+    //查询活期余额
+    public float check(Integer cid){
+        CardActive cardActive=cardActiveRepository.findByCid(cid);
+        return cardActive.getBalance();
     }
 
 

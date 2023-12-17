@@ -51,5 +51,13 @@ public class AccountController {
         return Result.ok("转账成功",tradeInfo);
     }
     //查询活期余额
+    @RequestMapping("/check_current_Balance")
+    public Result check_current(@RequestParam Integer cid) {
+        float money=accountService.check(cid);
+        if(money<0){
+            return Result.err(Result.CODE_ERR_BUSINESS,"查询失败");
+        }
+        return Result.ok("查询成功",money);
+    }
 
 }
