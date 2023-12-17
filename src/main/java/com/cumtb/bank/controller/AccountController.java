@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/account")
 public class AccountController {
     private AccountService accountService;

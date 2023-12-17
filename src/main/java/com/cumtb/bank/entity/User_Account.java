@@ -3,13 +3,14 @@ package com.cumtb.bank.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+//import java.io.Serializable;
 
 @Table(name = "user_account")
 @Entity
 public class User_Account {
     @Id
     private Integer uid;
-    @Id
+//    @Id
     private Integer cid;
 
     public User_Account() {

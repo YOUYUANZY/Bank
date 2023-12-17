@@ -6,8 +6,10 @@ import com.cumtb.bank.service.LoginService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/login")
 public class LoginController {
     @Resource
@@ -20,7 +22,9 @@ public class LoginController {
      * @return Result结果
      * */
     @RequestMapping("/login")
-    public Result login(@RequestParam String phone,@RequestParam String password){
+    public Result login(@RequestBody Map<String,Object> jsonData){
+        String phone=(String) jsonData.get("phone");
+        String password=(String) jsonData.get("password");
         User user= loginService.loginService(phone,password);
         if(user!=null){
             return Result.ok("登录成功!",user);
